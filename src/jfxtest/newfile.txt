@@ -1,0 +1,33 @@
+frames: 100
+speed: 2fps
+1
+
+Circle
+r: 10
+x: 50
+y: 50
+color: 255, 0, 0
+border: 2
+borderColor: 0, 255, 0
+effect
+Show
+start: 0
+effect
+Hide
+start: 50
+effect
+Jump
+start: 10
+x: 100
+y: 100
+
+Rectangle
+length: 10
+width: 20
+x: 200
+y: 150
+color: 255, 0, 0
+border: 8
+effect
+Show
+start: 2
