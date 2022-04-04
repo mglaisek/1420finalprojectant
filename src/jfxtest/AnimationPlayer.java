@@ -30,41 +30,53 @@ public class AnimationPlayer extends Application    {
     public static Group root = new Group(); // must be static so that it can be accessed from start
     public static Timeline timeline = new Timeline();
     
-    public AnimationPlayer()    {
+    /**
+     * Default constructor
+     */
+    public AnimationPlayer()    { //default constructor 
         
     }
     
+    
+    /**
+     * Starts the animation
+     * @param primaryStage passed stage
+     */
     @Override
     public void start(Stage primaryStage)   {
-        timeline.play();
-        Scene scene = new Scene(root, 300, 300);
+        timeline.play(); // starts the animation
+        Scene scene = new Scene(root, 300, 300); // creates a scene and adds root to it
         if(debug)
             System.out.println("Successfully initialized scene");
-        primaryStage.setTitle("Animation Player");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.setTitle("Animation Player"); // titles the display
+        primaryStage.setScene(scene); // adds the scene to the stage
+        primaryStage.show(); // shows the stage
     }
     
+    /**
+     * loads an animation from a file
+     * @param fileName the file to load from
+     */
     public void loadAnimationFromFile(String fileName) {
         if(debug)
             System.out.println("Loading animation from "+fileName);
         
-        File file = new File(fileName);
+        File file = new File(fileName); // creates a file object from the passed string
         
         try {
             Scanner sc = new Scanner(file); // initialize file reader
             
             // variables used to store information during parsing
-            String line;
+            String line; //creates variables
             Duration time;
-            String pline[];
-            KeyFrame animation;
-            boolean readNext = true;
+            String pline[]; //creates array for string
+            KeyFrame animation; //creates animation object
+            boolean readNext = true; //creates variable set to true
             
             // parses the total frames of the animation
-            line = sc.nextLine();
-            pline = line.split(": ",2);
-            numFrames = Integer.parseInt(pline[1]);
+            line = sc.nextLine(); //read next line
+            pline = line.split(": ",2); //split text at colon 
+            numFrames = Integer.parseInt(pline[1]); //set variable to element 1 of array
             if(debug)
                 System.out.println(numFrames+" total frames");
             
@@ -77,18 +89,18 @@ public class AnimationPlayer extends Application    {
             if(debug)
                 System.out.println(fps+" frames per second");
             
-            // gets the number of shapes
-            line = sc.nextLine();
+            // parses the number of shapes
+            line = sc.nextLine(); 
             numAnimations = Integer.parseInt(line);
             if(debug)
-                System.out.println(numAnimations+1+" shapes to be animated");
+                System.out.println(numAnimations+" shapes to be animated");
             
             sc.nextLine(); // skips the next line as it should be blank
             
             // parses each shape and each of their animations, then adds them to the root
-            for(int i=0; i<=numAnimations; i++)  {
-                line = sc.nextLine();
-                if(line.equals("Line")) {
+            for(int i=0; i<numAnimations; i++)  {
+                line = sc.nextLine(); //reads next line
+                if(line.equals("Line")) { //checks type of shape
                     if(debug)
                         System.out.println("Line shape");
                     Line ln = new Line();
@@ -326,7 +338,8 @@ public class AnimationPlayer extends Application    {
                     root.getChildren().add(ln);
                     if(debug)
                         System.out.println("Added line to root");
-                } else if(line.equals("Rectangle")) {
+                
+                } else if(line.equals("Rect")) {
                     if(debug)
                         System.out.println("Rectangle shape");
                     Rectangle r = new Rectangle(); // creates an empty rectangle object
@@ -598,12 +611,12 @@ public class AnimationPlayer extends Application    {
                         line = sc.nextLine();
                         pline = line.split(": ",2);
                     }
-                    if(pline[0].equals("r"))    {
+                    if(pline[0].equals("r"))    { //if first element equals r, set variable equal to r
                         c.setRadius(Integer.parseInt(pline[1]));
                         if(debug)
                             System.out.println("radius "+pline[1]);
                         readNext = true;
-                    } else {
+                    } else { //if element 0 does not equal r, set radius to 0 and continue using same line
                         c.setRadius(0);
                         readNext = false;
                     }
@@ -838,9 +851,9 @@ public class AnimationPlayer extends Application    {
         }
     }
     
-    public static void main(String[] args) throws InvocationTargetException {
+    public static void main(String[] args) {
         AnimationPlayer player = new AnimationPlayer();
-        player.loadAnimationFromFile("C:\\Users\\mylog\\Documents\\NetBeansProjects\\jfxtest\\src\\jfxtest\\newfile.txt");
+        player.loadAnimationFromFile("C:\\Users\\zaa20\\OneDrive\\Documents\\NetBeansProjects\\1420finalprojectant\\src\\jfxtest\\newfile.txt");
         player.launch(args);
     }
 }
