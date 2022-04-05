@@ -54,7 +54,7 @@ public class AnimationPlayer extends Application    {
     }
     
     /**
-     * loads an animation from a file
+     * loads the animation from a file
      * @param fileName the file to load from
      */
     public void loadAnimationFromFile(String fileName) {
@@ -851,9 +851,20 @@ public class AnimationPlayer extends Application    {
         }
     }
     
+    /**
+     * runs the animation
+     */
+    public void run()   {
+        this.launch();
+    }
+    
+    /**
+     * the main method
+     * @param args arguments
+     */
     public static void main(String[] args) {
         AnimationPlayer player = new AnimationPlayer();
         player.loadAnimationFromFile("C:\\Users\\zaa20\\OneDrive\\Documents\\NetBeansProjects\\1420finalprojectant\\src\\jfxtest\\newfile.txt");
-        player.launch(args);
+        player.run();
     }
 }
