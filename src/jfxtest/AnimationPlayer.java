@@ -81,16 +81,16 @@ public class AnimationPlayer extends Application    {
                 System.out.println(numFrames+" total frames");
             
             // parses the framerate
-            line = sc.nextLine();
-            pline = line.split(": ",2);
+            line = sc.nextLine(); //reads line
+            pline = line.split(": ",2);//split text at colon and f
             pline = pline[1].split("f",2);
             fps = Integer.parseInt(pline[0]);
-            timeline = new Timeline(fps);
+            timeline = new Timeline(fps); //creates object
             if(debug)
                 System.out.println(fps+" frames per second");
             
             // parses the number of shapes
-            line = sc.nextLine(); 
+            line = sc.nextLine();  //reads line
             numAnimations = Integer.parseInt(line);
             if(debug)
                 System.out.println(numAnimations+" shapes to be animated");
@@ -103,104 +103,104 @@ public class AnimationPlayer extends Application    {
                 if(line.equals("Line")) { //checks type of shape
                     if(debug)
                         System.out.println("Line shape");
-                    Line ln = new Line();
+                    Line ln = new Line(); //creates line object
                     //<editor-fold defaultstate="collapsed" desc="Loads a line's properties">
                     if(debug)
                         ln.setVisible(true);
                     else 
-                        ln.setVisible(false);
+                        ln.setVisible(false); //make line invisible
                     
                     // parse the startX
-                    if(readNext)    {
-                        line = sc.nextLine();
-                        pline = line.split(": ",2);
+                    if(readNext)    { //if read next is true
+                        line = sc.nextLine(); //read line
+                        pline = line.split(": ",2); //split text
                     }
-                    if(pline[0].equals("startX"))    {
-                        ln.setStartX(Integer.parseInt(pline[1]));
+                    if(pline[0].equals("startX"))    { //if first element is "startX"
+                        ln.setStartX(Integer.parseInt(pline[1])); //set startX equal to next element
                         if(debug)
                             System.out.println("startX "+pline[1]);
-                        readNext = true;
+                        readNext = true; //read next true
                     } else { // default length
-                        ln.setStartX(0);
-                        readNext = false;
+                        ln.setStartX(0); //set start x to 0
+                        readNext = false; //read next false
                     }
                     
                     // parse the startY
-                    if(readNext)    {
-                        line = sc.nextLine();
-                        pline = line.split(": ",2);
+                    if(readNext)    { //if read next is true
+                        line = sc.nextLine(); //read line
+                        pline = line.split(": ",2); //split text
                     }
-                    if(pline[0].equals("startY"))    {
-                        ln.setStartY(Integer.parseInt(pline[1]));
+                    if(pline[0].equals("startY"))    { //if element is "startY"
+                        ln.setStartY(Integer.parseInt(pline[1])); //set next element to startY
                         if(debug)
                             System.out.println("startY "+pline[1]);
-                        readNext = true;
+                        readNext = true; //read next true
                     } else { // default width
-                        ln.setStartX(0);
-                        readNext = false;
+                        ln.setStartX(0); //set start y to 0
+                        readNext = false; //read next false
                     }
 
                     // parse the endX
-                    if(readNext)    {
-                        line = sc.nextLine();
-                        pline = line.split(": ",2);
+                    if(readNext)    { //if read next is true
+                        line = sc.nextLine(); //read line
+                        pline = line.split(": ",2); //split text
                     }
-                    if(pline[0].equals("endX"))    {
-                        ln.setEndX(Integer.parseInt(pline[1]));
+                    if(pline[0].equals("endX"))    { //if first element is "endX"
+                        ln.setEndX(Integer.parseInt(pline[1])); //set EndX equal to next element
                         if(debug)
                             System.out.println("endX "+pline[1]);
-                        readNext = true;
+                        readNext = true; //read next true
                     } else { // default y
-                        ln.setEndX(0);
-                        readNext = false;
+                        ln.setEndX(0); //set EndX to 0
+                        readNext = false; //read next false
                     }
                     
                     // parse the endY
-                    if(readNext)    {
-                        line = sc.nextLine();
-                        pline = line.split(": ",2);
+                    if(readNext)    {//if read next is true
+                        line = sc.nextLine(); //read line
+                        pline = line.split(": ",2);  //split text
                     }
-                    if(pline[0].equals("endY"))    {
-                        ln.setEndY(Integer.parseInt(pline[1]));
+                    if(pline[0].equals("endY"))    {  //if first element is "endY"
+                        ln.setEndY(Integer.parseInt(pline[1])); //set EndY equal to next element
                         if(debug)
                             System.out.println("endY "+pline[1]);
-                        readNext = true;
+                        readNext = true; //read next true
                     } else { // default y
-                        ln.setEndY(0);
-                        readNext = false;
+                        ln.setEndY(0); //set EndY to 0
+                        readNext = false; //read next false
                     }
                     
                     // parse the color
-                    if(readNext)    {
-                        line = sc.nextLine();
-                        pline = line.split(": ",2);
+                    if(readNext)    { //if read next is true
+                        line = sc.nextLine(); //read next line
+                        pline = line.split(": ",2); //split text
                     }
-                    if(pline[0].equals("color")) {
-                        pline = pline[1].split(", ",3);
-                        Color co = Color.rgb(Integer.parseInt(pline[0]),Integer.parseInt(pline[1]),Integer.parseInt(pline[2]));
-                        ln.setFill(co);
+                    if(pline[0].equals("color")) { //if first element is "color"
+                        pline = pline[1].split(", ",3); //splits text
+                        Color co = Color.rgb(Integer.parseInt(pline[0]),Integer.parseInt(pline[1]),Integer.parseInt(pline[2])); //creates color using the elements of the array
+                        ln.setFill(co); //sets Fill to colour object
                         if(debug)
                             System.out.println("color "+pline[0]+","+pline[1]+","+pline[2]);
-                        readNext = true;
+                        readNext = true; //read next true
                     }
                     else    { // default color
-                        ln.setFill(Color.BLACK);
-                        readNext = false;
+                        ln.setFill(Color.BLACK); //sets Fill to black
+                        readNext = false; //read next false
                     }
                     
                     // parse the border thickness
-                    if(readNext)    {
-                        line = sc.nextLine();
-                        pline = line.split(": ",2);
+                    if(readNext)    { //if read next is true
+                        line = sc.nextLine(); //read next line
+                        pline = line.split(": ",2); //split text
                     }
-                    if(pline[0].equals("border"))    {
-                        ln.setStrokeWidth(Integer.parseInt(pline[1]));
+                    if(pline[0].equals("border"))    { //if first element equals "border"
+                        ln.setStrokeWidth(Integer.parseInt(pline[1])); //set border to next element
                         if(debug)
                             System.out.println("border "+pline[1]);
-                        readNext = true;
+                        readNext = true; //read next is true
                     } else { // default border thickness
-                        ln.setStrokeWidth(0);
-                        readNext = false;
+                        ln.setStrokeWidth(0); //set border to 0
+                        readNext = false; //read next false
                     }
                     // no border color as per the instructions
                     //</editor-fold>
@@ -335,11 +335,11 @@ public class AnimationPlayer extends Application    {
                     }
                     //</editor-fold>
                     
-                    root.getChildren().add(ln);
+                    root.getChildren().add(ln); //add shape to root
                     if(debug)
                         System.out.println("Added line to root");
                 
-                } else if(line.equals("Rect")) {
+                } else if(line.equals("Rect")) { //if line equals "Rect"
                     if(debug)
                         System.out.println("Rectangle shape");
                     Rectangle r = new Rectangle(); // creates an empty rectangle object
@@ -592,10 +592,10 @@ public class AnimationPlayer extends Application    {
                     }
                     //</editor-fold>
                     
-                    root.getChildren().add(r);
+                    root.getChildren().add(r); //add shape to root
                     if(debug)
                         System.out.println("Added rectangle to root");
-                } else if(line.equals("Circle"))    {
+                } else if(line.equals("Circle"))    { //if line equals "Circle"
                     if(debug)
                         System.out.println("Circle shape");
                     Circle c = new Circle(); // creates an empty circle object
@@ -833,7 +833,7 @@ public class AnimationPlayer extends Application    {
                     }
                     //</editor-fold>
                     
-                    root.getChildren().add(c);
+                    root.getChildren().add(c); //add shape to root
                     if(debug)
                         System.out.println("Added circle to root");
                     
@@ -843,7 +843,7 @@ public class AnimationPlayer extends Application    {
                 }
                 
             }
-            sc.close();
+            sc.close(); //close scanner
             if(debug)
                 System.out.println("Finished assembling root");
         } catch (FileNotFoundException e)   {
@@ -855,7 +855,7 @@ public class AnimationPlayer extends Application    {
      * runs the animation
      */
     public void run()   {
-        this.launch();
+        this.launch(); //launch application
     }
     
     /**
@@ -863,8 +863,8 @@ public class AnimationPlayer extends Application    {
      * @param args arguments
      */
     public static void main(String[] args) {
-        AnimationPlayer player = new AnimationPlayer();
+        AnimationPlayer player = new AnimationPlayer(); //create new object
         player.loadAnimationFromFile("C:\\Users\\zaa20\\OneDrive\\Documents\\NetBeansProjects\\1420finalprojectant\\src\\jfxtest\\newfile.txt");
-        player.run();
+        player.run(); //runs animation
     }
 }
